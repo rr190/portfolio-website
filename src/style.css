@@ -1,0 +1,167 @@
+/* =========================
+  Global Styles
+  ========================= */
+:root {
+  --background: #f2f1ed;
+  --text: #111111;
+  --muted: #777777;
+  --border: #c9c8c3;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: var(--background);
+  color: var(--text);
+  line-height: 1.4;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+main {
+  padding: 0 3vw;
+}
+
+
+/* =========================
+   NAVBAR
+   ========================= */
+
+nav {
+  padding: 24px 3vw;
+
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav h2 {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.nav-links {
+  display: flex;
+  gap: 28px;
+}
+
+.nav-links a {
+  font-size: 0.8rem;
+}
+
+/* =========================
+   HERO
+   ========================= */
+
+#hero {
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 10vh;
+  margin-right: clamp(40px, 6vw, 80px);
+  position: relative;
+}
+
+.hero-title {
+  margin-bottom: clamp(40px, 6vw, 80px);
+  padding: 0;
+  transform: translateY(-8vh);
+}
+
+.hero-title h1 {
+  max-width: 1100px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: clamp(40px, 6vw, 80px);
+
+  font-size: clamp(5rem, 12vw, 11rem);
+  line-height: 0.85;
+  letter-spacing: -0.07em;
+  font-weight: 530;
+  text-align: right;
+}
+
+.name-first {
+  transform: translateX(clamp(-80px, -8vw, -20px));
+}
+
+.hero-subtitle {
+  margin-top: clamp(40px, 6vw, 80px);
+  margin-left: 7vw;
+}
+
+.hero-subtitle h2 {
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  line-height: 1;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: var(--muted);
+  margin: 0;
+}
+
+.scroll {
+  position: absolute;
+  right: 0;
+  bottom: 30px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+}
+
+section {
+  padding: 120px 0;
+  border-top: 1px solid var(--border);
+}
+
+section > h2 {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 400;
+  color: var(--muted);
+
+  margin-bottom: 80px;
+}
+
+/* =========================
+   Project
+   ========================= */
+
+.project {
+  display: grid;
+  grid-template-columns: 60px 1fr;
+
+  padding: 40px 0;
+  border-top: 1px solid var(--border);
+}
+
+.project h3 {
+  font-size: clamp(3rem, 7vw, 7rem);
+  font-weight: 500;
+  line-height: 0.9;
+  letter-spacing: -0.05em;
+}
+
+.project p {
+  margin-top: 16px;
+  color: var(--muted);
+}
+
