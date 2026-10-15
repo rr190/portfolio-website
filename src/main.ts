@@ -32,24 +32,46 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   </section>
 
   <section id="projects">
-    <h2>Projects</h2>
-    <ul class="project-list">
-      <li class="project">
-        <span>01</span>
+    <h2>Selected Work</h2>
 
-        <div>
-          <h3>Knowledge Graph</h3>
-          <p>AI / Data / Software</p>
-        </div>
-      </li>
-      <li class="project">
-        <span>02</span>
-        <div>
-          <h3>Portfolio Website</h3>
-          <p>Web Development</p>
-        </div>
-      </li>
-    </ul>    
+    <div class="projects-viewport">
+      <div class="project-list">
+
+        <a href="#" class="project-item">
+          <span class="project-number">01</span>
+
+          <div class="project-content">
+            <h3>Knowledge<br>Graph</h3>
+            <p>Automation / Data</p>
+          </div>
+
+          <img src="/projects/random_image.jpg" alt="Knowledge Graph">
+        </a>
+
+        <a href="#" class="project-item">
+          <span class="project-number">02</span>
+
+          <div class="project-content">
+            <h3>Portfolio<br>Website</h3>
+            <p>Web Development</p>
+          </div>
+
+          <img src="/projects/random_image.jpg" alt="Portfolio Website">
+        </a>
+
+        <a href="#" class="project-item">
+          <span class="project-number">03</span>
+
+          <div class="project-content">
+            <h3>Machine<br>Learning</h3>
+            <p>Machine Learning / AI</p>
+          </div>
+
+          <img src="/projects/random_image.jpg" alt="Machine Learning">
+        </a>
+
+      </div>
+    </div>
   </section>
 
   <section id="about">
@@ -73,3 +95,67 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   </section>
 </main>
 `
+
+const projectsSection = document.querySelector<HTMLElement>('#projects')
+const projectList = document.querySelector<HTMLElement>('.project-list');
+function updateProjects() {
+  if (!projectsSection || !projectList) return;
+
+  const rect = projectsSection.getBoundingClientRect();
+
+  const scrollDistance =
+    projectsSection.offsetHeight - window.innerHeight;
+
+  const progress =
+    Math.min(
+      Math.max(-rect.top / scrollDistance, 0),
+      1
+    );
+
+  const maxMove =
+    projectList.scrollWidth - window.innerWidth;
+
+  const move =
+    progress * maxMove;
+
+  projectList.style.transform =
+    `translateX(${-move}px)`;
+
+  updateProjectPositions();
+}
+
+function updateProjectPositions() {
+  const projects = document.querySelectorAll<HTMLElement>('.project-item');
+
+  const screenCenter = window.innerWidth / 2;
+
+  projects.forEach((project) => {
+
+    const rect =   project.getBoundingClientRect();
+
+    const projectCenter = rect.left + rect.width / 2;
+
+    const distance =  (projectCenter - screenCenter) / window.innerWidth;
+
+    const absDistance =  Math.min(Math.abs(distance), 1);
+    const scale =1 - absDistance * 0.25;
+
+    const rotation = distance * 6;
+
+    const y = absDistance * 30;
+    const opacity = 1 - absDistance * 0.6;
+
+
+    project.style.transform = `
+      translateY(${y}px)
+      scale(${scale})
+      rotate(${rotation}deg)
+    `;
+
+    project.style.opacity =
+      `${opacity}`;
+  });
+}
+window.addEventListener('scroll', updateProjects);
+
+updateProjects();

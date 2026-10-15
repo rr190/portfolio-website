@@ -61,6 +61,23 @@ nav h2 {
 .nav-links a {
   font-size: 0.8rem;
 }
+/* =========================
+   Sections
+   ========================= */
+section {
+  padding: 120px 0;
+  border-top: 1px solid var(--border);
+}
+
+section > h2 {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 400;
+  color: var(--muted);
+
+  margin-bottom: 80px;
+}
 
 /* =========================
    HERO
@@ -126,42 +143,122 @@ nav h2 {
   letter-spacing: 0.12em;
 }
 
-section {
-  padding: 120px 0;
-  border-top: 1px solid var(--border);
-}
-
-section > h2 {
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  font-weight: 400;
-  color: var(--muted);
-
-  margin-bottom: 80px;
-}
 
 /* =========================
-   Project
+   PROJECTS
    ========================= */
 
-.project {
-  display: grid;
-  grid-template-columns: 60px 1fr;
-
-  padding: 40px 0;
-  border-top: 1px solid var(--border);
+#projects {
+  position: relative;
+  height: 300vh;
 }
 
-.project h3 {
-  font-size: clamp(3rem, 7vw, 7rem);
-  font-weight: 500;
-  line-height: 0.9;
-  letter-spacing: -0.05em;
+/* The screen/window through which we see the projects */
+
+.projects-viewport {
+  position: sticky;
+  top: 0;
+
+  height: 100vh;
+
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
 }
 
-.project p {
-  margin-top: 16px;
+
+/* Horizontal strip */
+
+.project-list {
+  display: flex;
+  align-items: center;
+
+  gap: 8vw;
+
+  width: max-content;
+
+  padding-left: 15vw;
+
+  will-change: transform;
+}
+
+
+/* Individual project */
+
+.project-item {
+  position: relative;
+
+  width: 55vw;
+  height: 65vh;
+
+  flex-shrink: 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  padding: 30px;
+
+  border: 1px solid var(--border);
+
+  overflow: hidden;
+
+  opacity: 0.5;
+
+  will-change: transform, opacity;
+}
+
+
+/* Project number */
+
+.project-number {
+  position: relative;
+  z-index: 2;
+
+  font-size: 0.7rem;
   color: var(--muted);
 }
 
+
+/* Project text */
+
+.project-content {
+  position: relative;
+  z-index: 2;
+}
+
+.project-item h3 {
+  font-size: clamp(4rem, 8vw, 9rem);
+
+  line-height: 0.8;
+
+  letter-spacing: -0.07em;
+
+  font-weight: 500;
+}
+
+.project-item p {
+  margin-top: 20px;
+
+  font-size: 0.8rem;
+
+  color: var(--muted);
+}
+
+
+/* Image */
+
+.project-item img {
+  position: absolute;
+
+  width: 55%;
+  height: 65%;
+
+  right: 5%;
+  top: 15%;
+
+  object-fit: cover;
+
+  will-change: transform;
+}
