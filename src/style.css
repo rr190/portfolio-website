@@ -143,17 +143,21 @@ section > h2 {
   letter-spacing: 0.12em;
 }
 
-
 /* =========================
    PROJECTS
    ========================= */
 
 #projects {
+  padding: 0;
   position: relative;
+  /* height is set in main.ts from the strip's width */
   height: 300vh;
 }
 
-/* The screen/window through which we see the projects */
+
+/* =========================
+   VIEWPORT
+   ========================= */
 
 .projects-viewport {
   position: sticky;
@@ -167,98 +171,243 @@ section > h2 {
   align-items: center;
 }
 
+.projects-heading {
+  position: absolute;
+  top: 40px;
+  left: 0;
+  margin: 0;
+}
 
-/* Horizontal strip */
+
+/* =========================
+   HORIZONTAL STRIP
+   ========================= */
 
 .project-list {
   display: flex;
   align-items: center;
 
-  gap: 8vw;
+  gap: 14vw;
 
   width: max-content;
 
-  padding-left: 15vw;
+  padding: 0 10vw 0 20vw;
 
   will-change: transform;
 }
 
 
-/* Individual project */
+/* =========================
+   PROJECT = title → media → description
+   ========================= */
 
 .project-item {
   position: relative;
 
-  width: 55vw;
-  height: 65vh;
+  display: flex;
+  align-items: stretch;
+  gap: 6vw;
+
+  height: 68vh;
 
   flex-shrink: 0;
+}
 
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-
-  padding: 30px;
-
-  border: 1px solid var(--border);
-
-  overflow: hidden;
-
-  opacity: 0.5;
+.panel {
+  position: relative;
+  flex-shrink: 0;
+  height: 100%;
 
   will-change: transform, opacity;
 }
 
 
-/* Project number */
+/* =========================
+   SIDE LABEL
+   ========================= */
+
+.project-side-label {
+  position: absolute;
+  left: -4vw;
+  top: 0;
+
+  writing-mode: vertical-lr;
+
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+
+  color: var(--muted);
+}
 
 .project-number {
-  position: relative;
-  z-index: 2;
-
   font-size: 0.7rem;
   color: var(--muted);
 }
 
 
-/* Project text */
+/* =========================
+   1. TITLE
+   ========================= */
 
-.project-content {
-  position: relative;
-  z-index: 2;
+.panel-title {
+  width: 52vw;
 }
 
-.project-item h3 {
-  font-size: clamp(4rem, 8vw, 9rem);
+.panel-title .project-number {
+  position: absolute;
+  top: 6%;
+  left: 0;
+}
 
+.word {
+  position: absolute;
+
+  margin: 0;
+
+  font-size: clamp(4.5rem, 10vw, 11rem);
+  font-weight: 400;
   line-height: 0.8;
-
   letter-spacing: -0.07em;
 
-  font-weight: 500;
+  white-space: nowrap;
 }
 
-.project-item p {
-  margin-top: 20px;
+.word-1 {
+  left: 0;
+  top: 20%;
+}
 
-  font-size: 0.8rem;
+.word-2 {
+  left: 18%;
+  top: 48%;
+}
+
+.project-type {
+  position: absolute;
+  left: 0;
+  bottom: 4%;
+
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
 
   color: var(--muted);
 }
 
 
-/* Image */
+/* =========================
+   2. IMAGE + INFO
+   ========================= */
 
-.project-item img {
-  position: absolute;
+.panel-media {
+  display: flex;
+  align-items: flex-end;
+  gap: 2.5vw;
+}
 
-  width: 55%;
-  height: 65%;
-
-  right: 5%;
-  top: 15%;
+.panel-media img {
+  width: 40vw;
+  height: 100%;
 
   object-fit: cover;
+  display: block;
+}
 
-  will-change: transform;
+.project-info {
+  width: 14vw;
+  min-width: 140px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+
+  font-size: 0.7rem;
+}
+
+.project-info dt {
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+
+/* =========================
+   3. DESCRIPTION
+   ========================= */
+
+.panel-desc {
+  width: 30vw;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.project-description {
+  font-size: clamp(1.1rem, 1.8vw, 1.75rem);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.project-link {
+  align-self: flex-start;
+
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 2px;
+}
+
+
+/* =========================
+   SMALL SCREENS
+   ========================= */
+
+@media (max-width: 700px) {
+  .project-list {
+    gap: 24vw;
+    padding: 0 8vw 0 16vw;
+  }
+
+  .project-item {
+    gap: 12vw;
+    height: 62vh;
+  }
+
+  .panel-title {
+    width: 80vw;
+  }
+
+  .word {
+    font-size: 4rem;
+  }
+
+  .panel-media {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .panel-media img {
+    width: 78vw;
+    height: auto;
+    flex: 1;
+    min-height: 0;
+  }
+
+  .project-info {
+    width: 78vw;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 12px 20px;
+  }
+
+  .panel-desc {
+    width: 78vw;
+  }
 }
