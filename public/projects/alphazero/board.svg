@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 900">
+<rect width="800" height="900" fill="#111111"/>
+<circle cx="112" cy="198" r="38" fill="#262626"/>
+<circle cx="208" cy="198" r="38" fill="#262626"/>
+<circle cx="304" cy="198" r="38" fill="#262626"/>
+<circle cx="400" cy="198" r="38" fill="#262626"/>
+<circle cx="496" cy="198" r="38" fill="#262626"/>
+<circle cx="592" cy="198" r="38" fill="#262626"/>
+<circle cx="688" cy="198" r="38" fill="#262626"/>
+<circle cx="112" cy="294" r="38" fill="#262626"/>
+<circle cx="208" cy="294" r="38" fill="#262626"/>
+<circle cx="304" cy="294" r="38" fill="#262626"/>
+<circle cx="400" cy="294" r="38" fill="#262626"/>
+<circle cx="496" cy="294" r="38" fill="#262626"/>
+<circle cx="592" cy="294" r="38" fill="#262626"/>
+<circle cx="688" cy="294" r="38" fill="#262626"/>
+<circle cx="112" cy="390" r="38" fill="#262626"/>
+<circle cx="208" cy="390" r="38" fill="#262626"/>
+<circle cx="304" cy="390" r="38" fill="#262626"/>
+<circle cx="400" cy="390" r="38" fill="#f2f1ed"/>
+<circle cx="496" cy="390" r="38" fill="#262626"/>
+<circle cx="592" cy="390" r="38" fill="#262626"/>
+<circle cx="688" cy="390" r="38" fill="#262626"/>
+<circle cx="112" cy="486" r="38" fill="#262626"/>
+<circle cx="208" cy="486" r="38" fill="#262626"/>
+<circle cx="304" cy="486" r="38" fill="#f2f1ed"/>
+<circle cx="400" cy="486" r="38" fill="#777777"/>
+<circle cx="496" cy="486" r="38" fill="#262626"/>
+<circle cx="592" cy="486" r="38" fill="#262626"/>
+<circle cx="688" cy="486" r="38" fill="#262626"/>
+<circle cx="112" cy="582" r="38" fill="#262626"/>
+<circle cx="208" cy="582" r="38" fill="#f2f1ed"/>
+<circle cx="304" cy="582" r="38" fill="#777777"/>
+<circle cx="400" cy="582" r="38" fill="#f2f1ed"/>
+<circle cx="496" cy="582" r="38" fill="#777777"/>
+<circle cx="592" cy="582" r="38" fill="#262626"/>
+<circle cx="688" cy="582" r="38" fill="#262626"/>
+<circle cx="112" cy="678" r="38" fill="#777777"/>
+<circle cx="208" cy="678" r="38" fill="#f2f1ed"/>
+<circle cx="304" cy="678" r="38" fill="#777777"/>
+<circle cx="400" cy="678" r="38" fill="#f2f1ed"/>
+<circle cx="496" cy="678" r="38" fill="#f2f1ed"/>
+<circle cx="592" cy="678" r="38" fill="#777777"/>
+<circle cx="688" cy="678" r="38" fill="#262626"/>
+<text x="64" y="830" font-family="Arial, sans-serif" font-size="16" letter-spacing="3" fill="#777777">CONNECT FOUR · SELF-PLAY</text>
+</svg>

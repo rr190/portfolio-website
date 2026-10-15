@@ -1,56 +1,6 @@
 import './style.css'
-
-type Project = {
-  title: [string, string]
-  label: string
-  type: string
-  role: string
-  year: string
-  stack: string[]
-  image: string
-  description: string
-  link: string
-}
-
-// TODO: replace placeholder copy with real project details
-const projects: Project[] = [
-  {
-    title: ['Knowledge', 'Graph'],
-    label: 'Bloomberg / Data Management',
-    type: 'Automation / Data',
-    role: 'Software Engineer Intern',
-    year: '2026',
-    stack: ['Python', 'GraphQL', 'RDF'],
-    image: '/projects/random_image.jpg',
-    description:
-      'An automated pipeline that turns scattered reference data into a connected knowledge graph, so analysts can query relationships between entities instead of stitching spreadsheets together by hand.',
-    link: '#',
-  },
-  {
-    title: ['Portfolio', 'Website'],
-    label: 'Personal / Design & Build',
-    type: 'Web / Design',
-    role: 'Designer & Developer',
-    year: '2026',
-    stack: ['TypeScript', 'Vite', 'CSS'],
-    image: '/projects/random_image.jpg',
-    description:
-      'This site. An editorial, type-led portfolio with a scroll-driven horizontal gallery, built from scratch without a framework.',
-    link: '#',
-  },
-  {
-    title: ['Machine', 'Learning'],
-    label: 'University of Warwick / Research',
-    type: 'AI / Modelling',
-    role: 'Researcher',
-    year: '2025',
-    stack: ['Python', 'PyTorch', 'Pandas'],
-    image: '/projects/random_image.jpg',
-    description:
-      'A machine learning project exploring how model choices affect real-world performance, from data cleaning and feature engineering through to evaluation.',
-    link: '#',
-  },
-]
+import { renderFooter, renderNav } from './layout'
+import { type Project, projectHref, projects } from './projects'
 
 const renderProject = (p: Project, i: number) => {
   const number = String(i + 1).padStart(2, '0')
@@ -80,24 +30,35 @@ const renderProject = (p: Project, i: number) => {
       <div class="panel panel-desc">
         <span class="project-number">${number} / About</span>
         <p class="project-description">${p.description}</p>
-        <a class="project-link" href="${p.link}">View project →</a>
+        <a class="project-link" href="${projectHref(p)}">View project →</a>
       </div>
     </article>
   `
 }
 
-document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
-<nav>
-  <h2> Jia Ru Sim </h2>
+type Experience = {
+  period: string
+  role: string
+  place: string
+}
 
-  <div class="nav-links">
-    <a href="#home">Home</a>
-    <a href="#about">About</a>
-    <a href="#projects">Projects</a>
-    <a href="#experience">Experience</a>
-    <a class="push" href="#contact">Contact</a>
-  </div>
-</nav>
+const experience: Experience[] = [
+  { period: '2024 — 2027', role: 'BSc, Final Year MORSE Student', place: 'University of Warwick' },
+  { period: '2025-2026', role: 'Part-Time AI Engineer Intern (Remote)', place: 'Global AI Village' },
+  { period: 'Summer 2026', role: 'Data Engineer Intern', place: 'Bloomberg' },
+  { period: 'Summer 2025', role: 'VC Investment Analyst Intern', place: 'The Hive SEA' },
+]
+
+const renderExperience = (e: Experience) => `
+  <li class="experience-item">
+    <span class="experience-period">${e.period}</span>
+    <span class="experience-role">${e.role}</span>
+    <span class="experience-place">${e.place}</span>
+  </li>
+`
+
+document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
+${renderNav()}
 
 <main>
   <section id="hero">
@@ -127,26 +88,37 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
     </div>
   </section>
 
-  <section id="about">
+  <section id="about" class="split">
     <h2>About</h2>
-    <p> I'm a final year student at the University of Warwick, interested in the intersection of data science, artificial intelligence, and product development.</p>
+    <div class="split-body">
+      <p class="about-lead">
+        I'm a final year student at the University of Warwick, interested in the
+        intersection of data science, artificial intelligence, and product development.
+      </p>
+    </div>
   </section>
 
-  <section id="experience">
+  <section id="experience" class="split">
     <h2>Experience</h2>
-  </section>
-
-  <section id="contact">
-    <h2>Contact</h2>
-    <ul>
-      <li>
-        <h3>Email</h3>
-        <h3>Github</h3>
-        <h3>LinkedIn</h3>
-      </li>
+    <ul class="split-body experience-list">
+      ${experience.map(renderExperience).join('')}
     </ul>
   </section>
+
+  <section id="contact" class="split">
+    <h2>Contact</h2>
+    <div class="split-body">
+      <p class="contact-lead">Let's build something.</p>
+      <ul class="contact-list">
+        <li><a href="#">Email <span>→</span></a></li>
+        <li><a href="#">GitHub <span>→</span></a></li>
+        <li><a href="#">LinkedIn <span>→</span></a></li>
+      </ul>
+    </div>
+  </section>
 </main>
+
+${renderFooter()}
 `
 
 const projectsSection = document.querySelector<HTMLElement>('#projects')
